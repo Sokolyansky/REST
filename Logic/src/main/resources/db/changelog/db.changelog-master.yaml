@@ -1,0 +1,46 @@
+databaseChangeLog:
+    - changeSet:
+       id: 18
+       author: sokolyansky
+       changes:
+       - dropTable:
+           cascadeConstraints: true
+
+           tableName: phone_book
+    - changeSet:
+        id: 19
+        author: sokolyansky
+        changes:
+          - createTable:
+              tableName: phone_book
+              columns:
+                - column:
+                    name: id
+                    type: int
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: name
+                    type: varchar(45)
+                    constraints:
+                      nullable: true
+                - column:
+                    name: phone_number
+                    type: varchar(11)
+                    constraints:
+                      nullable: true
+    - changeSet:
+        id: 20
+        author: sokolyansky
+        changes:
+          - insert:
+              tableName: phone_book
+              columns:
+                - column:
+                    name: name
+                    value: Yury
+                - column:
+                    name: phone_number
+                    value: 89658853677
